@@ -3,3 +3,4 @@
 git clone https://github.com/iotaledger/wasp.git
 cd wasp/tools/local-setup
 
+docker-compose up
