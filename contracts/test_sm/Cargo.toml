@@ -3,7 +3,20 @@ name = "test_sm"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
-identity_iota = { version = "0.6" }
-iota-client = { version = "2.0.1-rc.4", default-features = false, features = ["tls", "stronghold"] }
-tokio = { version = "1", features = ["full"] }
+# essential for smart contract
+wasmlib = { git = "https://github.com/iotaledger/wasp", rev = "05516ca" }
+# better debugging of panics
+console_error_panic_hook = { version = "0.1.6", optional = true }
+# tiny allocator for wasm
+wee_alloc = { version = "0.4.5", optional = true }
+chrono = "0.4"
+serde = { version = "1.0.144", features = ["derive"] }
+serde_json = "1.0.85"
+serde_with = "2.2.0"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
