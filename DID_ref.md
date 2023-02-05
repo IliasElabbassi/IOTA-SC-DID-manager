@@ -1,36 +1,3 @@
-### IOTA idenity informations
-
-- IOTA indenty is an API we cannot implement it in a Smart contract
-- the API allows us to create identity, delete identity and more
-
-- we need to create a rust script to interract with the API
-- Create a Cargo environemen ```cargo new did_test```
-- update dependencies has follow :
-
-```
-[package]
-name = "did_test"
-version = "0.1.0"
-edition = "2021"
-
-[lib]
-crate-type = ["cdylib", "rlib"]
-
-[dependencies]
-identity_iota = "0.6.1"
-iota-client = { version = "2.0.1-rc", default-features = false, features = ["tls", "stronghold"] }
-tokio = { version = "1", features = ["full"] }
-
-[dev-dependencies]
-wasm-bindgen-test = "0.3.13"
-```
-
-How to implement ?
-
-- the two IOT devices need to have a DID
-- when they want to communicate they need to transfert 
-
-
 ### IOTA indentity rust
 
 https://github.com/iotaledger/identity.rs
@@ -101,20 +68,11 @@ https://wiki.iota.org/identity.rs/tutorials/validate_university_degree/
 
 Steps :
 - Holder: Create a DID
-    - ```npm run start create-did alice alice-password```
 - Issuer: Create a DID
-    - ```npm run start create-did uni-of-oslo uni-password```
 - Issuer: Add a Verification Method
-    - npm run start create-vm uni-of-oslo uni-password key-1
 - Holder: Add a Verification Method
-    - npm run start create-vm alice alice-password key-1
 - Issuer: Create Revocation list
-    - npm run start add-revocation-list uni-of-oslo uni-password rev-1
 - Issuer: Create Verifiable Credential
-    - npm run start create-vc uni-of-oslo uni-password alice <subjectDid> key-1 rev-1 5
 - Holder: Create Verifiable Presentation
-    - npm run start create-vp alice alice-password alice-credential.json key-1 xyz123
 - Verifier: Verification
-    - npm run start verify-vp alice-presentation.json xyz123
 - Issuer: Revocation
-    - npm run start revoke-vc uni-of-oslo uni-password rev-1 5
