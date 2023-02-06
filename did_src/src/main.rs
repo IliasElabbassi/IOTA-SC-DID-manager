@@ -30,6 +30,7 @@ fn main(){
         } else if user_input.contains("create"){
             println!("creating a did :");
             create_did::create(); // Use :: to Call a function defined in the other file (module)
+            println!("did created !");
         }else {
             println!("command not recognized !");
         }
