@@ -29,7 +29,7 @@ pub async fn create() -> Result<()> {
     let stronghold_path: PathBuf = "./did-strong.hodl".into();
     let password: String = user_input_psw.to_owned();
     let stronghold: Stronghold = Stronghold::new(&stronghold_path, password, None).await?;
-
+    
     // Create a new identity using Stronghold as local storage.
     //
     // The creation step generates a keypair, builds an identity
