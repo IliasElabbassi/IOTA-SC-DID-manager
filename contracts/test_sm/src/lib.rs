@@ -23,8 +23,6 @@ use serde_with::serde_as;
 use serde::{Serialize, Deserialize};
 use std::collections::HashMap;
 
-
-
 #[no_mangle]
 fn on_load() {
     // functions of the smart contract
@@ -77,7 +75,7 @@ struct Bet {
 #[derive(Deserialize, Serialize)]
 struct ContainerOfBets {
     // map betting account's wallet address (string) to a Bet
-    map: HashMap<String,Bet>,
+    map: Vec()
 }
 
 
