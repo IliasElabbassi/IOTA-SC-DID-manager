@@ -1,0 +1,19 @@
+name: did_append_contract
+description: did_append_contract description
+author: Ilias El Abbassi <iliaselabbassi@outlook.fr>
+events: {}
+structs: {}
+typedefs: {}
+state:
+    owner: AgentID # current owner of this smart contract
+funcs:
+    init:
+        params:
+            owner: AgentID? # optional owner of this smart contract
+    setOwner:
+        access: owner # current owner of this smart contract
+        params:
+            owner: AgentID # new owner of this smart contract
+    appendDid:
+        params:
+            DID: String

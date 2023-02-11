@@ -64,7 +64,7 @@ pub fn func_append_did(ctx: &ScFuncContext, f: &ScFuncContext) -> i32 {
         let DID_vector: Vec<String> = array.as_array().unwrap();
 
         // get the new DID from the function context params
-        let new_DID = f.params.DID().value().to_string();
+        let new_DID = f.params().DID().value().to_string();
 
         // add the new DID into the DID_vector
         DID_vector.push(new_DID);
