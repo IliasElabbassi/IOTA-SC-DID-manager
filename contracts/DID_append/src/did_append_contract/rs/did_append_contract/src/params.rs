@@ -11,3 +11,87 @@
 use wasmlib::*;
 
 use crate::*;
+
+#[derive(Clone)]
+pub struct ImmutableAddDidParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl ImmutableAddDidParams {
+    pub fn new() -> ImmutableAddDidParams {
+        ImmutableAddDidParams {
+            proxy: params_proxy(),
+        }
+    }
+
+    pub fn new_did(&self) -> ScImmutableString {
+        ScImmutableString::new(self.proxy.root(PARAM_NEW_DID))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableAddDidParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl MutableAddDidParams {
+    pub fn new_did(&self) -> ScMutableString {
+        ScMutableString::new(self.proxy.root(PARAM_NEW_DID))
+    }
+}
+
+#[derive(Clone)]
+pub struct ImmutableInitParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl ImmutableInitParams {
+    pub fn new() -> ImmutableInitParams {
+        ImmutableInitParams {
+            proxy: params_proxy(),
+        }
+    }
+
+    pub fn owner(&self) -> ScImmutableAgentID {
+        ScImmutableAgentID::new(self.proxy.root(PARAM_OWNER))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableInitParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl MutableInitParams {
+    pub fn owner(&self) -> ScMutableAgentID {
+        ScMutableAgentID::new(self.proxy.root(PARAM_OWNER))
+    }
+}
+
+#[derive(Clone)]
+pub struct ImmutableSetOwnerParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl ImmutableSetOwnerParams {
+    pub fn new() -> ImmutableSetOwnerParams {
+        ImmutableSetOwnerParams {
+            proxy: params_proxy(),
+        }
+    }
+
+    pub fn owner(&self) -> ScImmutableAgentID {
+        ScImmutableAgentID::new(self.proxy.root(PARAM_OWNER))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableSetOwnerParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl MutableSetOwnerParams {
+    pub fn owner(&self) -> ScMutableAgentID {
+        ScMutableAgentID::new(self.proxy.root(PARAM_OWNER))
+    }
+}
