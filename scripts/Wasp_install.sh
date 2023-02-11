@@ -6,6 +6,7 @@ export PATH=$PATH:/usr/local/go/bin
 go version
 
 # Installing the Solidity Compiler
+sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:ethereum/ethereum
 sudo apt-get update
 sudo apt-get install solc
