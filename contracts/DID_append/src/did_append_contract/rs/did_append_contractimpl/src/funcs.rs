@@ -8,6 +8,7 @@ use crate::*;
 
 // This was the only function I needed to change after generating the code
 pub fn func_add_did(_ctx: &ScFuncContext, f: &AddDidContext) {
+    // we check if the new_did parameter exists
     if f.params.new_did().exists() {
         // We get the DID parameters provided to the function call
         let did : ScMutableString = f.params.new_did.value();
