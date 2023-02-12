@@ -11,17 +11,17 @@ pub fn func_add_did(_ctx: &ScFuncContext, f: &AddDidContext) {
     // we check if the new_did parameter exists
     if f.params.new_did().exists() {
         // We get the DID parameters provided to the function call
-        let did : ScMutableString = f.params.new_did.value();
+        let did : String = f.params.new_did().value().to_string();
 
         // the DID aray is implemented has d_id in the genrated code
         // Get the proxy to the 'DID' array in the state storage.
-        let did_list: ArrayOfMutableString = f.state.d_id();
+        let did_list = f.state.d_id();
         // f.state.d_id().append_string(f.params.new_did().value());
 
         // Now we will append the new did to the did_list array.
         // We create an ScMutableString proxy to a string value that lives
         // at the end of the did_list array (no value yet, since we're appending).
-        let new_did: ScMutableString = member_list.append_string();
+        let new_did: ScMutableString = did_list.append_string();
 
         // And finally we append the new string to the array by telling the proxy
         // to update the value it refers to with the 'did' parameter.
