@@ -1,6 +1,5 @@
 #### Comment compiler un Smart Contract IOTA
 
-
 #### Prérequis
 
 - Rust
@@ -9,9 +8,9 @@
 
 #### Etapes
 
-- Crée un environement Cargo avec la commande ```cargo new <project_name>```
+- Crée un environement Cargo avec la commande ```cargo new <project_name>``` ou bien grace a la commande `schema -init yourEnv`
 
-voici comment le document est constituer
+voici comment le folder creer par Cargo est constituer
 ```
 * Cargo.toml        # define dependencies of the smart contract
 * src/lib.rs        # Source of the smart contract
@@ -20,7 +19,6 @@ voici comment le document est constituer
 ```
 
 - Compile le smart contract et generer le fichier wasm ```wasm-pack build```
-
 
 #### Rust dependencies
 
