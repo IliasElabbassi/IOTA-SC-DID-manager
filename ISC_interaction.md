@@ -7,4 +7,4 @@
 With our append_did contract name appenddid :
 
 - wasp-cli chain call-view appenddid getOwner | wasp-cli decode string owner AgentID
-- wasp-cli chain post-request appenddid addDid
+- wasp-cli chain post-request appenddid addDid String newDID "testDID"
