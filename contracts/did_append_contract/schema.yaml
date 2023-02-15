@@ -18,6 +18,12 @@ funcs:
   addDid:
     params:
       newDID: String
+  deleteDid:
+    params:
+      toDeleteDID: String
+  updateDid:
+    params:
+      toUpdateDID: String
 views:
   getOwner:
     results:
