@@ -41,6 +41,34 @@ impl MutableAddDidParams {
 }
 
 #[derive(Clone)]
+pub struct ImmutableDeleteDidParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl ImmutableDeleteDidParams {
+    pub fn new() -> ImmutableDeleteDidParams {
+        ImmutableDeleteDidParams {
+            proxy: params_proxy(),
+        }
+    }
+
+    pub fn to_delete_did(&self) -> ScImmutableString {
+        ScImmutableString::new(self.proxy.root(PARAM_TO_DELETE_DID))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableDeleteDidParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl MutableDeleteDidParams {
+    pub fn to_delete_did(&self) -> ScMutableString {
+        ScMutableString::new(self.proxy.root(PARAM_TO_DELETE_DID))
+    }
+}
+
+#[derive(Clone)]
 pub struct ImmutableInitParams {
     pub(crate) proxy: Proxy,
 }
@@ -93,5 +121,33 @@ pub struct MutableSetOwnerParams {
 impl MutableSetOwnerParams {
     pub fn owner(&self) -> ScMutableAgentID {
         ScMutableAgentID::new(self.proxy.root(PARAM_OWNER))
+    }
+}
+
+#[derive(Clone)]
+pub struct ImmutableUpdateDidParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl ImmutableUpdateDidParams {
+    pub fn new() -> ImmutableUpdateDidParams {
+        ImmutableUpdateDidParams {
+            proxy: params_proxy(),
+        }
+    }
+
+    pub fn to_update_did(&self) -> ScImmutableString {
+        ScImmutableString::new(self.proxy.root(PARAM_TO_UPDATE_DID))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableUpdateDidParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl MutableUpdateDidParams {
+    pub fn to_update_did(&self) -> ScMutableString {
+        ScMutableString::new(self.proxy.root(PARAM_TO_UPDATE_DID))
     }
 }

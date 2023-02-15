@@ -15,14 +15,18 @@ use crate::*;
 const EXPORT_MAP: ScExportMap = ScExportMap {
     names: &[
         FUNC_ADD_DID,
+        FUNC_DELETE_DID,
         FUNC_INIT,
         FUNC_SET_OWNER,
+        FUNC_UPDATE_DID,
         VIEW_GET_OWNER,
     ],
     funcs: &[
         func_add_did_thunk,
+        func_delete_did_thunk,
         func_init_thunk,
         func_set_owner_thunk,
+        func_update_did_thunk,
     ],
     views: &[
         view_get_owner_thunk,
@@ -47,6 +51,22 @@ fn func_add_did_thunk(ctx: &ScFuncContext) {
     ctx.require(f.params.new_did().exists(), "missing mandatory param: newDID");
     func_add_did(ctx, &f);
     ctx.log("did_append_contract.funcAddDid ok");
+}
+
+pub struct DeleteDidContext {
+    pub params: ImmutableDeleteDidParams,
+    pub state:  Mutabledid_append_contractState,
+}
+
+fn func_delete_did_thunk(ctx: &ScFuncContext) {
+    ctx.log("did_append_contract.funcDeleteDid");
+    let f = DeleteDidContext {
+        params: ImmutableDeleteDidParams::new(),
+        state:  Mutabledid_append_contractState::new(),
+    };
+    ctx.require(f.params.to_delete_did().exists(), "missing mandatory param: toDeleteDID");
+    func_delete_did(ctx, &f);
+    ctx.log("did_append_contract.funcDeleteDid ok");
 }
 
 pub struct InitContext {
@@ -83,6 +103,22 @@ fn func_set_owner_thunk(ctx: &ScFuncContext) {
     ctx.require(f.params.owner().exists(), "missing mandatory param: owner");
     func_set_owner(ctx, &f);
     ctx.log("did_append_contract.funcSetOwner ok");
+}
+
+pub struct UpdateDidContext {
+    pub params: ImmutableUpdateDidParams,
+    pub state:  Mutabledid_append_contractState,
+}
+
+fn func_update_did_thunk(ctx: &ScFuncContext) {
+    ctx.log("did_append_contract.funcUpdateDid");
+    let f = UpdateDidContext {
+        params: ImmutableUpdateDidParams::new(),
+        state:  Mutabledid_append_contractState::new(),
+    };
+    ctx.require(f.params.to_update_did().exists(), "missing mandatory param: toUpdateDID");
+    func_update_did(ctx, &f);
+    ctx.log("did_append_contract.funcUpdateDid ok");
 }
 
 pub struct GetOwnerContext {

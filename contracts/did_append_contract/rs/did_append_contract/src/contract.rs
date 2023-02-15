@@ -11,23 +11,33 @@ use wasmlib::*;
 
 use crate::*;
 
-pub struct AddDidCall<'a> {
-    pub func:   ScFunc<'a>,
+pub struct AddDidCall {
+    pub func:   ScFunc,
     pub params: MutableAddDidParams,
 }
 
-pub struct InitCall<'a> {
-    pub func:   ScInitFunc<'a>,
+pub struct DeleteDidCall {
+    pub func:   ScFunc,
+    pub params: MutableDeleteDidParams,
+}
+
+pub struct InitCall {
+    pub func:   ScInitFunc,
     pub params: MutableInitParams,
 }
 
-pub struct SetOwnerCall<'a> {
-    pub func:   ScFunc<'a>,
+pub struct SetOwnerCall {
+    pub func:   ScFunc,
     pub params: MutableSetOwnerParams,
 }
 
-pub struct GetOwnerCall<'a> {
-    pub func:    ScView<'a>,
+pub struct UpdateDidCall {
+    pub func:   ScFunc,
+    pub params: MutableUpdateDidParams,
+}
+
+pub struct GetOwnerCall {
+    pub func:    ScView,
     pub results: ImmutableGetOwnerResults,
 }
 
@@ -39,6 +49,15 @@ impl ScFuncs {
         let mut f = AddDidCall {
             func:    ScFunc::new(ctx, HSC_NAME, HFUNC_ADD_DID),
             params:  MutableAddDidParams { proxy: Proxy::nil() },
+        };
+        ScFunc::link_params(&mut f.params.proxy, &f.func);
+        f
+    }
+
+    pub fn delete_did(ctx: &impl ScFuncCallContext) -> DeleteDidCall {
+        let mut f = DeleteDidCall {
+            func:    ScFunc::new(ctx, HSC_NAME, HFUNC_DELETE_DID),
+            params:  MutableDeleteDidParams { proxy: Proxy::nil() },
         };
         ScFunc::link_params(&mut f.params.proxy, &f.func);
         f
@@ -57,6 +76,15 @@ impl ScFuncs {
         let mut f = SetOwnerCall {
             func:    ScFunc::new(ctx, HSC_NAME, HFUNC_SET_OWNER),
             params:  MutableSetOwnerParams { proxy: Proxy::nil() },
+        };
+        ScFunc::link_params(&mut f.params.proxy, &f.func);
+        f
+    }
+
+    pub fn update_did(ctx: &impl ScFuncCallContext) -> UpdateDidCall {
+        let mut f = UpdateDidCall {
+            func:    ScFunc::new(ctx, HSC_NAME, HFUNC_UPDATE_DID),
+            params:  MutableUpdateDidParams { proxy: Proxy::nil() },
         };
         ScFunc::link_params(&mut f.params.proxy, &f.func);
         f
