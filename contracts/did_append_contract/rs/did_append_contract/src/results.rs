@@ -13,6 +13,34 @@ use wasmlib::*;
 use crate::*;
 
 #[derive(Clone)]
+pub struct ImmutableGetDIDResults {
+    pub proxy: Proxy,
+}
+
+impl ImmutableGetDIDResults {
+    pub fn indexed_did(&self) -> ScImmutableString {
+        ScImmutableString::new(self.proxy.root(RESULT_INDEXED_DID))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableGetDIDResults {
+    pub proxy: Proxy,
+}
+
+impl MutableGetDIDResults {
+    pub fn new() -> MutableGetDIDResults {
+        MutableGetDIDResults {
+            proxy: results_proxy(),
+        }
+    }
+
+    pub fn indexed_did(&self) -> ScMutableString {
+        ScMutableString::new(self.proxy.root(RESULT_INDEXED_DID))
+    }
+}
+
+#[derive(Clone)]
 pub struct ImmutableGetOwnerResults {
     pub proxy: Proxy,
 }

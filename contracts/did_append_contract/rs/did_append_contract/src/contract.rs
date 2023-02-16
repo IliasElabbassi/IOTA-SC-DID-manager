@@ -11,33 +11,39 @@ use wasmlib::*;
 
 use crate::*;
 
-pub struct AddDidCall {
-    pub func:   ScFunc,
+pub struct AddDidCall<'a> {
+    pub func:   ScFunc<'a>,
     pub params: MutableAddDidParams,
 }
 
-pub struct DeleteDidCall {
-    pub func:   ScFunc,
+pub struct DeleteDidCall<'a> {
+    pub func:   ScFunc<'a>,
     pub params: MutableDeleteDidParams,
 }
 
-pub struct InitCall {
-    pub func:   ScInitFunc,
+pub struct InitCall<'a> {
+    pub func:   ScInitFunc<'a>,
     pub params: MutableInitParams,
 }
 
-pub struct SetOwnerCall {
-    pub func:   ScFunc,
+pub struct SetOwnerCall<'a> {
+    pub func:   ScFunc<'a>,
     pub params: MutableSetOwnerParams,
 }
 
-pub struct UpdateDidCall {
-    pub func:   ScFunc,
+pub struct UpdateDidCall<'a> {
+    pub func:   ScFunc<'a>,
     pub params: MutableUpdateDidParams,
 }
 
-pub struct GetOwnerCall {
-    pub func:    ScView,
+pub struct GetDIDCall<'a> {
+    pub func:    ScView<'a>,
+    pub params:  MutableGetDIDParams,
+    pub results: ImmutableGetDIDResults,
+}
+
+pub struct GetOwnerCall<'a> {
+    pub func:    ScView<'a>,
     pub results: ImmutableGetOwnerResults,
 }
 
@@ -87,6 +93,17 @@ impl ScFuncs {
             params:  MutableUpdateDidParams { proxy: Proxy::nil() },
         };
         ScFunc::link_params(&mut f.params.proxy, &f.func);
+        f
+    }
+
+    pub fn get_did(ctx: &impl ScViewCallContext) -> GetDIDCall {
+        let mut f = GetDIDCall {
+            func:    ScView::new(ctx, HSC_NAME, HVIEW_GET_DID),
+            params:  MutableGetDIDParams { proxy: Proxy::nil() },
+            results: ImmutableGetDIDResults { proxy: Proxy::nil() },
+        };
+        ScView::link_params(&mut f.params.proxy, &f.func);
+        ScView::link_results(&mut f.results.proxy, &f.func);
         f
     }
 

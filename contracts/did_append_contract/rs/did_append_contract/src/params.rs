@@ -139,6 +139,10 @@ impl ImmutableUpdateDidParams {
     pub fn to_update_did(&self) -> ScImmutableString {
         ScImmutableString::new(self.proxy.root(PARAM_TO_UPDATE_DID))
     }
+
+    pub fn value(&self) -> ScImmutableString {
+        ScImmutableString::new(self.proxy.root(PARAM_VALUE))
+    }
 }
 
 #[derive(Clone)]
@@ -149,5 +153,37 @@ pub struct MutableUpdateDidParams {
 impl MutableUpdateDidParams {
     pub fn to_update_did(&self) -> ScMutableString {
         ScMutableString::new(self.proxy.root(PARAM_TO_UPDATE_DID))
+    }
+
+    pub fn value(&self) -> ScMutableString {
+        ScMutableString::new(self.proxy.root(PARAM_VALUE))
+    }
+}
+
+#[derive(Clone)]
+pub struct ImmutableGetDIDParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl ImmutableGetDIDParams {
+    pub fn new() -> ImmutableGetDIDParams {
+        ImmutableGetDIDParams {
+            proxy: params_proxy(),
+        }
+    }
+
+    pub fn index(&self) -> ScImmutableUint8 {
+        ScImmutableUint8::new(self.proxy.root(PARAM_INDEX))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableGetDIDParams {
+    pub(crate) proxy: Proxy,
+}
+
+impl MutableGetDIDParams {
+    pub fn index(&self) -> ScMutableUint8 {
+        ScMutableUint8::new(self.proxy.root(PARAM_INDEX))
     }
 }

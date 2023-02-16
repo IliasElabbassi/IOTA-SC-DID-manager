@@ -15,7 +15,7 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 did_append_contract = { path = "../did_append_contract" }
-wasmlib = { git = "https://github.com/iotaledger/wasp", branch = "develop" }
+wasmlib = { git = "https://github.com/iotaledger/wasp", branch = "wasmclient" }
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.34"

@@ -19,6 +19,7 @@ const EXPORT_MAP: ScExportMap = ScExportMap {
         FUNC_INIT,
         FUNC_SET_OWNER,
         FUNC_UPDATE_DID,
+        VIEW_GET_DID,
         VIEW_GET_OWNER,
     ],
     funcs: &[
@@ -29,6 +30,7 @@ const EXPORT_MAP: ScExportMap = ScExportMap {
         func_update_did_thunk,
     ],
     views: &[
+        view_get_did_thunk,
         view_get_owner_thunk,
     ],
 };
@@ -117,8 +119,28 @@ fn func_update_did_thunk(ctx: &ScFuncContext) {
         state:  Mutabledid_append_contractState::new(),
     };
     ctx.require(f.params.to_update_did().exists(), "missing mandatory param: toUpdateDID");
+    ctx.require(f.params.value().exists(), "missing mandatory param: value");
     func_update_did(ctx, &f);
     ctx.log("did_append_contract.funcUpdateDid ok");
+}
+
+pub struct GetDIDContext {
+    pub params:  ImmutableGetDIDParams,
+    pub results: MutableGetDIDResults,
+    pub state:   Immutabledid_append_contractState,
+}
+
+fn view_get_did_thunk(ctx: &ScViewContext) {
+    ctx.log("did_append_contract.viewGetDID");
+    let f = GetDIDContext {
+        params:  ImmutableGetDIDParams::new(),
+        results: MutableGetDIDResults::new(),
+        state:   Immutabledid_append_contractState::new(),
+    };
+    ctx.require(f.params.index().exists(), "missing mandatory param: index");
+    view_get_did(ctx, &f);
+    ctx.results(&f.results.proxy);
+    ctx.log("did_append_contract.viewGetDID ok");
 }
 
 pub struct GetOwnerContext {

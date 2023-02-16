@@ -24,7 +24,13 @@ funcs:
   updateDid:
     params:
       toUpdateDID: String
+      value: String
 views:
+  getDID:
+    params:
+      index: Uint8
+    results:
+      indexedDID: String
   getOwner:
     results:
       owner: AgentID // current owner of this smart contract

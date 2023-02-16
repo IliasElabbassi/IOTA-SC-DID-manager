@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"???t/d/Master2/PFE/contracts/DID_append/src/did_append_contract/go/did_append_contract"
+	"???t/c/Users/ilias/DEV/PFE/contracts/did_append_contract/go/did_append_contract"
 	"github.com/iotaledger/wasp/packages/wasmvm/wasmsolo"
 )
 
