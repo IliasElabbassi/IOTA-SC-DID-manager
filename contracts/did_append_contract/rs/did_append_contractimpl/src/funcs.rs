@@ -37,6 +37,8 @@ pub fn func_add_did(_ctx: &ScFuncContext, f: &AddDidContext) {
     }
 }
 
+// function to delete a did, by giving the did to delete we go trough all the existing did and check if one exist.
+// if yes we update it's string to "DELETED"
 pub fn func_delete_did(ctx: &ScFuncContext, f: &DeleteDidContext) {
     if f.params.to_delete_did().exists() {
         // get the did to delete from the params
@@ -59,6 +61,7 @@ pub fn func_delete_did(ctx: &ScFuncContext, f: &DeleteDidContext) {
     }
 }
 
+// functions to update a did, by giving as params, the String of the did to update and the string of the new DID
 pub fn func_update_did(ctx: &ScFuncContext, f: &UpdateDidContext) {
     if f.params.to_update_did().exists() {
         // get the did to update from the params
@@ -76,7 +79,7 @@ pub fn func_update_did(ctx: &ScFuncContext, f: &UpdateDidContext) {
             let did_at_index = did_list.get_string((idx) as u32);
             // check if the did given in params is the same as the current did
             if(to_update_did == did_at_index.to_string()){
-                // if yes then delete it by overwritting it
+                // if yes then update it by overwritting it
                 did_at_index.set_value(&(value_to_update_to.to_string()) as &str);
             }
         }
