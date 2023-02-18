@@ -26,6 +26,9 @@ funcs:
       toUpdateDID: String
       value: String
 views:
+  getLength:
+    results:
+      length: Uint8
   getDID:
     params:
       index: Uint8

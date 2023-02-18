@@ -20,6 +20,7 @@ const EXPORT_MAP: ScExportMap = ScExportMap {
         FUNC_SET_OWNER,
         FUNC_UPDATE_DID,
         VIEW_GET_DID,
+        VIEW_GET_LENGTH,
         VIEW_GET_OWNER,
     ],
     funcs: &[
@@ -31,6 +32,7 @@ const EXPORT_MAP: ScExportMap = ScExportMap {
     ],
     views: &[
         view_get_did_thunk,
+        view_get_length_thunk,
         view_get_owner_thunk,
     ],
 };
@@ -141,6 +143,22 @@ fn view_get_did_thunk(ctx: &ScViewContext) {
     view_get_did(ctx, &f);
     ctx.results(&f.results.proxy);
     ctx.log("did_append_contract.viewGetDID ok");
+}
+
+pub struct GetLengthContext {
+    pub results: MutableGetLengthResults,
+    pub state:   Immutabledid_append_contractState,
+}
+
+fn view_get_length_thunk(ctx: &ScViewContext) {
+    ctx.log("did_append_contract.viewGetLength");
+    let f = GetLengthContext {
+        results: MutableGetLengthResults::new(),
+        state:   Immutabledid_append_contractState::new(),
+    };
+    view_get_length(ctx, &f);
+    ctx.results(&f.results.proxy);
+    ctx.log("did_append_contract.viewGetLength ok");
 }
 
 pub struct GetOwnerContext {

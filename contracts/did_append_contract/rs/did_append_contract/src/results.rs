@@ -41,6 +41,34 @@ impl MutableGetDIDResults {
 }
 
 #[derive(Clone)]
+pub struct ImmutableGetLengthResults {
+    pub proxy: Proxy,
+}
+
+impl ImmutableGetLengthResults {
+    pub fn length(&self) -> ScImmutableUint8 {
+        ScImmutableUint8::new(self.proxy.root(RESULT_LENGTH))
+    }
+}
+
+#[derive(Clone)]
+pub struct MutableGetLengthResults {
+    pub proxy: Proxy,
+}
+
+impl MutableGetLengthResults {
+    pub fn new() -> MutableGetLengthResults {
+        MutableGetLengthResults {
+            proxy: results_proxy(),
+        }
+    }
+
+    pub fn length(&self) -> ScMutableUint8 {
+        ScMutableUint8::new(self.proxy.root(RESULT_LENGTH))
+    }
+}
+
+#[derive(Clone)]
 pub struct ImmutableGetOwnerResults {
     pub proxy: Proxy,
 }

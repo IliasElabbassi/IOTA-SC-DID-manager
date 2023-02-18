@@ -99,3 +99,11 @@ pub fn view_get_did(ctx: &ScViewContext, f: &GetDIDContext) {
     let did_viewed = did_list.get_string((f.params.index().value()) as u32);
     f.results.indexed_did().set_value(&(did_viewed.to_string()) as &str);
 }
+
+pub fn view_get_length(ctx: &ScViewContext, f: &GetLengthContext) {
+    // the did list
+    let did_list = f.state.d_id();
+    // get the did list length
+    let did_list_len = did_list.length()-1;
+    f.results.length().set_value((did_list_len) as u8);
+}

@@ -42,6 +42,11 @@ pub struct GetDIDCall<'a> {
     pub results: ImmutableGetDIDResults,
 }
 
+pub struct GetLengthCall<'a> {
+    pub func:    ScView<'a>,
+    pub results: ImmutableGetLengthResults,
+}
+
 pub struct GetOwnerCall<'a> {
     pub func:    ScView<'a>,
     pub results: ImmutableGetOwnerResults,
@@ -103,6 +108,15 @@ impl ScFuncs {
             results: ImmutableGetDIDResults { proxy: Proxy::nil() },
         };
         ScView::link_params(&mut f.params.proxy, &f.func);
+        ScView::link_results(&mut f.results.proxy, &f.func);
+        f
+    }
+
+    pub fn get_length(ctx: &impl ScViewCallContext) -> GetLengthCall {
+        let mut f = GetLengthCall {
+            func:    ScView::new(ctx, HSC_NAME, HVIEW_GET_LENGTH),
+            results: ImmutableGetLengthResults { proxy: Proxy::nil() },
+        };
         ScView::link_results(&mut f.results.proxy, &f.func);
         f
     }

@@ -21,6 +21,7 @@ pub const PARAM_TO_UPDATE_DID : &str = "toUpdateDID";
 pub const PARAM_VALUE         : &str = "value";
 
 pub const RESULT_INDEXED_DID : &str = "indexedDID";
+pub const RESULT_LENGTH      : &str = "length";
 pub const RESULT_OWNER       : &str = "owner";
 
 pub const STATE_D_ID  : &str = "DID";
@@ -32,6 +33,7 @@ pub const FUNC_INIT       : &str = "init";
 pub const FUNC_SET_OWNER  : &str = "setOwner";
 pub const FUNC_UPDATE_DID : &str = "updateDid";
 pub const VIEW_GET_DID    : &str = "getDID";
+pub const VIEW_GET_LENGTH : &str = "getLength";
 pub const VIEW_GET_OWNER  : &str = "getOwner";
 
 pub const HFUNC_ADD_DID    : ScHname = ScHname(0x555df086);
@@ -40,4 +42,5 @@ pub const HFUNC_INIT       : ScHname = ScHname(0x1f44d644);
 pub const HFUNC_SET_OWNER  : ScHname = ScHname(0x2a15fe7b);
 pub const HFUNC_UPDATE_DID : ScHname = ScHname(0x4f080c9a);
 pub const HVIEW_GET_DID    : ScHname = ScHname(0x924c01bc);
+pub const HVIEW_GET_LENGTH : ScHname = ScHname(0x129fa094);
 pub const HVIEW_GET_OWNER  : ScHname = ScHname(0x137107a6);
