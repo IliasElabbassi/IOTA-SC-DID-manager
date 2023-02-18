@@ -61,5 +61,5 @@ chain has been created successfully on the Tangle. ChainID: tst1pzzpltpfedhpxtfz
 - You can now see the chain in the wasp dashboard in the chain section.
 ![Alt text](./img/chain.png)
 
-- you can now deploy a smart contract like this if you are on the folder where the wasm file is located : `wasp-cli chain deploy-contract wasmtime appenddid "My Append DID contract" ./did_append_contractimpl_bg.wasm`
+- you can now deploy a smart contract like this if you are on the folder where the wasm file is located : `wasp-cli chain deploy-contract wasmtime appenddid "My Append DID contract" ./did_append_contractwasm_bg.wasm`
 
