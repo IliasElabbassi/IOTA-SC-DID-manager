@@ -43,15 +43,15 @@ pub async fn create() -> Result<()> {
     let iota_did: &IotaDID = account.did();
 
     // Print the local state of the DID Document
-    println!("[DID Creation] Local Document from {} = {:#?} \n", iota_did, account.document());
-
+    //println!("[DID Creation] Local Document from {} = {:#?} \n", iota_did, account.document());
+    println!("{}", iota_did);
     // Prints the Identity Resolver Explorer URL.
     // The entire history can be observed on this page by clicking "Loading History".
-    let explorer: &ExplorerUrl = ExplorerUrl::mainnet();
-    println!(
-        "[DID Creation] Explore the DID Document = {} \n",
-        explorer.resolver_url(iota_did)?
-    );
+    // let explorer: &ExplorerUrl = ExplorerUrl::mainnet();
+    // println!(
+    //     "[DID Creation] Explore the DID Document = {} \n",
+    //     explorer.resolver_url(iota_did)?
+    // );
 
     Ok(())
 }
