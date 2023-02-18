@@ -1,6 +1,7 @@
 mod create_did; // A mod declaration makes the Rust compiler look for the corresponding .rs files automatically!
 use did_src::PKG_NAME;
 use std::io;
+use std::env;
 
 // fn help(){
 //     println!("Here is a list of the different options you get : ");
@@ -14,7 +15,12 @@ use std::io;
 // }
 
 fn main(){
-    
+    let args: Vec<_> = env::args().collect();
+    if args.len() < 1 {
+        println!("You should pass a password to the script !");
+    }
+    // println!("{}",args[1]);
+
     // println!("Welcome to your Dicentralized Identity platform !!!\n");
     // help();
 
@@ -35,7 +41,6 @@ fn main(){
     //         println!("command not recognized !");
     //     }
     // }
-
-    create_did::create(); // Use :: to Call a function defined in the other file (module)
+    create_did::create( &args[1]); // Use :: to Call a function defined in the other file (module)
     println!("did created !");
 }

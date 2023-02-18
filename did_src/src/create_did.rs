@@ -12,23 +12,24 @@ use identity_iota::client::ExplorerUrl;
 use identity_iota::iota_core::IotaDID;
 
 #[tokio::main]
-pub async fn create() -> Result<()> {
+pub async fn create(pass: &String) -> Result<()> {
     pretty_env_logger::init();
 
-    let mut user_input_psw = String::new();
-    let stdin = io::stdin();
+    // let mut user_input_psw = String::new();
+    // let stdin = io::stdin();
     
-    println!("insert password for did creation : ");
-    stdin.read_line(&mut user_input_psw);
-    println!("creating your new DID document please wait...\n");
+    // println!("insert password for did creation : ");
+    // stdin.read_line(&mut user_input_psw);
+    // println!("creating your new DID document please wait...\n");
 
     // Sets the location and password for the Stronghold
     //
     // Stronghold is an encrypted file that manages private keys.
     // It implements best practices for security and is the recommended way of handling private keys.
     let stronghold_path: PathBuf = "./did-strong.hodl".into();
-    let password: String = user_input_psw.to_owned();
-    let stronghold: Stronghold = Stronghold::new(&stronghold_path, password, None).await?;
+    // let password: String = user_input_psw.to_owned();
+    let password: &String = pass;
+    let stronghold: Stronghold = Stronghold::new(&stronghold_path, std::string::String::from((password)), None).await?;
     
     // Create a new identity using Stronghold as local storage.
     //
@@ -43,7 +44,7 @@ pub async fn create() -> Result<()> {
     let iota_did: &IotaDID = account.did();
 
     // Print the local state of the DID Document
-    //println!("[DID Creation] Local Document from {} = {:#?} \n", iota_did, account.document());
+    account.document();
     println!("{}", iota_did);
     // Prints the Identity Resolver Explorer URL.
     // The entire history can be observed on this page by clicking "Loading History".
