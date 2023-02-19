@@ -1,26 +1,40 @@
-#### Comment compiler un Smart Contract IOTA
+#### How to Compile an IOTA Smart Contract
 
-#### Prérequis
+#### Prerequisites
 
 - Rust
 - Wasm Pack
 - Cargo
+- Go 1.19.5
 
-#### Etapes
+#### Steps
 
-- Crée un environement Cargo avec la commande ```cargo new <project_name>``` ou bien grace a la commande `schema -init yourEnv`
+- Create a Cargo environment with the command ```cargo new <project name>``` or with the command ``schema -init yourEnv` (it's reccomended to use the schema tool)
 
-voici comment le folder creer par Cargo est constituer
+here is how the folder is constituted after using `schema -rs`
 ```
-* Cargo.toml        # define dependencies of the smart contract
-* src/lib.rs        # Source of the smart contract
-* pkg/              # location du fichier wasm
+* rs/
+*   my_project_contract/        # location of the backbone of your ISC (dont touch this code)
+*   my_project_contractimpl/    # locationf of the funcs.rs file that represent the real logic of your ISC
+*   my_project_contractwasm/    # location of the main func of your ISC (dont touch this code)
+* test/
+* schema.yaml 
+```
+
+```
+* Cargo.toml                    # define dependencies of the smart contract
+* src/lib.rs                    # Source code
+* pkg/                          # build sources (where the wasm file is also located)
 * target/
 ```
 
-- Compile le smart contract et generer le fichier wasm ```wasm-pack build```
+- to compile a Schema tool project go into the `impl` folder created : `cd rs/my_project_contractimpl`
 
-#### Schema tool
+- Compile the smart contract and generate the wasm file with ```wasm-pack build```
+
+- the wasm file is now located on under the `pkg` folder
+
+#### Schema tool install
 
 - We need to have the wasp repo cloned localy.
 - After that add the bin folder inside the Wasp repo to the Path `export PATH=$PATH:$(go env GOPATH)/bin` assuming you already have Go
