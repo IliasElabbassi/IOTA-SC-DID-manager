@@ -45,7 +45,7 @@ pub fn func_delete_did(ctx: &ScFuncContext, f: &DeleteDidContext) {
         // the did list
         let did_list = f.state.d_id();
         // get the did list length
-        let did_list_len = did_list.length()-1;
+        let did_list_len = did_list.length();
 
         // go through all the did in the list
         for idx in 0..did_list_len {
@@ -70,7 +70,7 @@ pub fn func_update_did(ctx: &ScFuncContext, f: &UpdateDidContext) {
         // the did list
         let did_list = f.state.d_id();
         // get the did list length
-        let did_list_len = did_list.length()-1;
+        let did_list_len = did_list.length();
 
         // go through all the did in the list
         for idx in 0..did_list_len {
