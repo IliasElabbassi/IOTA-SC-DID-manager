@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IFS=' '
-ISCname='realdid'
+ISCname='appenddid3'
 stronHoldFile="./did-strong.hodl"
 
 echo "Please choose what to do :"
@@ -50,10 +50,17 @@ fi
 
 if [ $which -eq 4 ]; then
     echo "View DIDs :"
-    didLen=$( wasp-cli chain call-view $ISCname getLength | wasp-cli decode int8 length int8 )
+    didLen=$( wasp-cli chain call-view $ISCname getLength | wasp-cli decode string length int8 )
+    read -ra didLenArr <<< $didLen
+    len=${didLenArr[1]}
+    echo "Length of the Array : $len"
+    didIndex=0
 
-    for didIndex in {0..$didLen} do
+    while [ $didIndex -le $len ]
+    do
+        echo "Index: $i"
         wasp-cli chain call-view $ISCname getDID int8 index int8 $didIndex | wasp-cli decode string indexedDID string
+        ((didIndex++))
     done
 fi
 

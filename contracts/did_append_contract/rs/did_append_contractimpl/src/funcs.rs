@@ -19,12 +19,11 @@ pub fn func_add_did(_ctx: &ScFuncContext, f: &AddDidContext) {
     // we check if the new_did parameter exists
     if f.params.new_did().exists() {
         // We get the DID parameters provided to the function call
-        let did : String = f.params.new_did().value().to_string();
+        let did : &str = &f.params.new_did().value().to_string();
 
         // the DID aray is implemented has d_id in the genrated code
         // Get the proxy to the 'DID' array in the state storage.
         let did_list = f.state.d_id();
-        // f.state.d_id().append_string(f.params.new_did().value());
 
         // Now we will append the new did to the did_list array.
         // We create an ScMutableString proxy to a string value that lives
@@ -33,7 +32,7 @@ pub fn func_add_did(_ctx: &ScFuncContext, f: &AddDidContext) {
 
         // And finally we append the new string to the array by telling the proxy
         // to update the value it refers to with the 'did' parameter.
-        new_did.set_value(&did);
+        new_did.set_value(did);
     }
 }
 
@@ -104,6 +103,6 @@ pub fn view_get_length(ctx: &ScViewContext, f: &GetLengthContext) {
     // the did list
     let did_list = f.state.d_id();
     // get the did list length
-    let did_list_len = did_list.length()-1;
+    let did_list_len = did_list.length();
     f.results.length().set_value((did_list_len) as u8);
 }
