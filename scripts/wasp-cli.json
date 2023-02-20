@@ -1,8 +1,6 @@
 {
-  "chain": "MyChain",
   "chains": {
-    "didchain": "tst1pzrk0e3yvg9zjpefhcutsptxflr2yr5n7twkccxaa9c86p8snpll7j2tr4k",
-    "mychain": "tst1pzkf3302snzykahps8zepjvzeugkamqelwt224650kxhw3z463hpuhrsncd"
+    "my-chain": "tst1ppsx4jwc4fenx5k7rgxc7qx97uf99j8m04urvmhuz5qz06kf9engzeqxwwm"
   },
   "l1": {
     "apiaddress": "http://localhost:14265",
@@ -31,16 +29,12 @@
         "useMetricPrefix": false
       }
     },
-    "timestamp": "2023-02-19T22:34:18.083195909+01:00"
+    "timestamp": "2023-02-20T01:18:48.541451267+01:00"
   },
   "wallet": {
-    "seed": "0x7deffc3685d494316c62c0e922d44d5a9510e5079e43fb0d7644826f9c7affd5"
+    "seed": "0x99ef925b865362cf3547d1af4cf28ee74656aee27a4a6371a0fb1298b36f3c8a"
   },
   "wasp": {
-    "0": {
-      "api": "http://localhost:9090",
-      "nanomsg": "127.0.0.1:5550",
-      "peering": "127.0.0.1:4000"
-    }
+    "wasp-0": "http://127.0.0.1:9090"
   }
 }

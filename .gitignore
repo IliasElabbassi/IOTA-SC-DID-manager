@@ -4,3 +4,4 @@ Cargo.lock
 pkg
 *.hodl
 test_folder
+wasp-cli.json

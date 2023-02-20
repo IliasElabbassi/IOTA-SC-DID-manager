@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IFS=' '
-ISCname='appenddid5'
+ISCname='appenddid'
 stronHoldFile="./did-strong.hodl"
 
 echo "Please choose what to do :"

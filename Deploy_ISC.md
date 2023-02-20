@@ -21,11 +21,7 @@
             "faucetaddress": "http://localhost:8091"
         },
         "wasp": {
-            "0": {
-            "api": "127.0.0.1:9090",
-            "nanomsg": "127.0.0.1:5550",
-            "peering": "127.0.0.1:4000"
-            }
+            "wasp-0": "http://127.0.0.1:9090"
         } 
         ```
 
@@ -35,18 +31,20 @@
 
 <br>
 
+for older wasp-cli version (with the new one we dont need to add ourself anymore):
 - after wasp-cli was configured use `wasp-cli peering info` the result should look something like this :
 ```
 PubKey: 0x108b0d8f4a0cc4933c01e87ac4bcc623159b74c1e00e3752f489f202c8cfda0a
 NetID: 0.0.0.0:4000
 ```
 <i>PubKey and NetID should be provided to other node operators. They can use this info to trust your node and accept communications with it.</i>
-
-- then use `wasp-cli peering trust  0x108b0d8f4a0cc4933c01e87ac4bcc623159b74c1e00e3752f489f202c8cfda0a 0.0.0.0:4000`
+- then use `wasp-cli peering trust another-node 0x108b0d8f4a0cc4933c01e87ac4bcc623159b74c1e00e3752f489f202c8cfda0a 0.0.0.0:4000`
 - You should now see it on the trusted list with `wasp-cli peering list-trusted`
+
+  <br>
 - to request fund use `wasp-cli request-funds`
 - After you have requested the funds, you can deposit funds to a chain by running: `wasp-cli chain deposit IOTA:10000`
-- you will then need to deploy your smart contract chain with : `wasp-cli chain deploy --quorum=1 --chain=testChain --description="Test Chain"` result should look like that : 
+- you will then need to deploy your smart contract chain with : `wasp-cli chain deploy --quorum=1 --chain=test-chain --description="Test Chain"` result should look like that : 
 ```
 creating new chain. Owner address: 0x1cb02961695d160cfb1c52878234f04a6585fe8d27ebf17865d578bb3aeac7ce. State controller: 0xb7405753db3181cb91a67438277a34623e8a4b4fc4bc56f450ef648375d8812d, N = 1, T = 1
 2023-02-12T23:50:21+01:00       INFO    nc      Posted blockID 0x7be80adf59790678b9ba1cbef838b2209399d4f06a3cd2d55b421d409e83d082
