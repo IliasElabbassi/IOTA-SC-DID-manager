@@ -58,7 +58,7 @@ if [ $which -eq 4 ]; then
 
     while [ $didIndex -le $len ]
     do
-        echo "Index: $i"
+        echo "Index: $didIndex"
         wasp-cli chain call-view $ISCname getDID string index int8 $didIndex | wasp-cli decode string indexedDID string
         ((didIndex++))
     done
